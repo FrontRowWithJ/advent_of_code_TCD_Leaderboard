@@ -1,0 +1,56 @@
+:root {
+    --outer-width: 11vw;
+    --inner-width: 8vw;
+}
+
+[id|="logo"] {
+    border-radius: 100vw;
+}
+
+#logo-container {
+    width: var(--outer-width);
+    height: var(--outer-width);
+    position: relative;
+    background-color: red;
+
+}
+
+.logo-image {
+    border-radius: 100vw;
+    width: var(--inner-width);
+    height: var(--inner-width);
+    position: absolute;
+    left: calc(50% - var(--inner-width) / 2);
+    top: calc(50% - var(--inner-width) / 2);
+    background-color: green;
+}
+
+#logo-text {
+    border-radius: 100vw;
+    width: var(--outer-width);
+    height: var(--outer-width);
+    position: absolute;
+    left: calc(50% - var(--outer-width) / 2);
+    top: calc(50% - var(--outer-width) / 2);
+    animation: rotate-logo 5s infinite forwards linear;
+}
+
+#logo-text svg {
+    width: 100%;
+    height: 100%;
+
+}
+
+@keyframes rotate-logo {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#test {
+    font-size: 0.7rem;
+}

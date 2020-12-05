@@ -1,0 +1,12 @@
+:root {
+    --container-width: 500px;
+}
+
+.star-grid {
+    display: grid;
+    grid-template-columns: repeat(25, 1fr);
+    grid-template-rows: 1fr 1fr;
+    width: var(--container-width);
+    height: calc(var(--container-width) / 12.5);
+    border: 1px solid black;
+}
