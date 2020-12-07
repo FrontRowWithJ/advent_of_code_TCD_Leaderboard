@@ -10,9 +10,11 @@
 #logo-container {
     width: var(--outer-width);
     height: var(--outer-width);
-    position: relative;
+    position: absolute;
     background-color: red;
-
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .logo-image {

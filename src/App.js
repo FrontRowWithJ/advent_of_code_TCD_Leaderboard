@@ -1,57 +1,61 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import Podium from './Podium.js';
 import Table from './Table.js';
 import Logo from './Logo.js';
+import Graph from './Graph.js';
 import './tailwind.output.css';
 
-
-
-const sendHTTPRequest = (setStatus, players, playerData) => {
+const sendHTTPRequest = (setPlayers, setTop3) => {
   const http = new XMLHttpRequest();
-  const url = "http://localhost:8080/";
+  const url = "http://localhost:8080/"; //! Update the url
   const colors = ["red", "white", "green"];
   http.open("GET", url);
   http.onreadystatechange = () => {
     if (http.readyState === XMLHttpRequest.DONE) {
-      const json = JSON.parse(http.responseText);
-      const p = [];
-      for (const member in json.members) {
-        p.push(json.members[member]);
+      try {
+        const json = JSON.parse(http.responseText);
+        const p = [];
+        for (const member in json.members) {
+          p.push(json.members[member]);
+        }
+        p.sort((a, b) => {
+          const als = +a.local_score;
+          const bls = +b.local_score;
+          return als > bls ? -1 : bls === als ? 0 : 1;
+        })
+        const top3 = p.slice(0, 3).map((e, i) => {
+          return { name: e.name, local_score: e.local_score, backgroundColor: colors[i] }
+        });
+        const tmp = top3[0];
+        top3[0] = top3[1];
+        top3[1] = tmp;
+        setTop3(top3);
+        setPlayers(p);
       }
-      p.sort((a, b) => {
-        const als = +a.local_score;
-        const bls = +b.local_score;
-        return als > bls ? -1 : bls === als ? 0 : 1;
-      })
-      playerData.current = p.slice(0, 3).map((e, i) => {
-        return { name: e.name, local_score: e.local_score, backgroundColor: colors[i] }
-      });
-      players.current = p;
-      const tmp = playerData.current[0];
-      playerData.current[0] = playerData.current[1];
-      playerData.current[1] = tmp;
-      setStatus(true);
+      catch (error) {
+        //! Ping the server, the error
+        console.log(error);
+      }
     }
   }
   http.send();
 }
 function App() {
   const maxHeight = 100;
-  const players = useRef();
-  const [status, setStatus] = useState(false);
-  const playerData = useRef();
+  const [players, setPlayers] = useState(null);
+  const [top3Players, setTop3] = useState(null);
   useEffect(() => {
-    sendHTTPRequest(setStatus, players, playerData);
+    sendHTTPRequest(setPlayers, setTop3);
   }, []);
   return (
-    status ? <div>
+    players ? <div>
       <div style={{ width: "100%" }}>Link to the competion website</div>
       <span>The code to join the competion</span>
-      <Logo></Logo>
-      <Podium playerData={playerData.current} maxHeight={maxHeight}></Podium>
-      <Table players={players.current}></Table>
 
-    </div> : <div>...loading</div>
+      <Podium playerData={top3Players} maxHeight={maxHeight}></Podium>
+      <Table players={players}></Table>
+      <Graph members={players}></Graph>
+    </div> : <Logo></Logo>
   );
 }
 

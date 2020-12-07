@@ -1,0 +1,11 @@
+.graph-label-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.graph-label {
+    color: black;
+    min-width: 15vw;
+    max-width: 30vw;
+}
