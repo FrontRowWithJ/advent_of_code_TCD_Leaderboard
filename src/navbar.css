@@ -1,0 +1,150 @@
+:root {
+    --margin-offset: 50%;
+    --button-width: 10vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#navbar-container {
+    position: absolute;
+    width: 100%;
+    height: 5vh;
+    background-color: orange;
+    bottom: 5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.button-container {
+    box-sizing: border-box;
+    background-color: aqua;
+    flex-grow: 1;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+
+.navbar-button {
+    box-sizing: border-box;
+    width: var(--button-width);
+    height: var(--button-width);
+    border-radius: 1vh;
+    background-color: rebeccapurple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#bottom {
+    color: white;
+    font-family: "Poppins";
+}
+
+#bottom a {
+    width: 100%;
+    justify-self: center;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    font-size: 1.3rem;
+    border-bottom: 2px;
+    height: 1.9rem;
+}
+
+#bottom a:hover {
+    color: rgb(0, 255, 0);
+    text-decoration: underline;
+    height: 1.9rem;
+}
+
+#bottom a:hover span {
+    display: none;
+}
+
+#bottom a:hover::before {
+    content: "Good Luck!";
+}
+
+#join-leaderboard {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 1.3rem;
+    padding-bottom: 8px;
+}
+
+.nav-button-svg {
+    width: 80%;
+    height: 80%;
+}
+
+#code {
+    background-color: rgb(228, 208, 10);
+    box-shadow: inset 20px 20px 60px #c2b109,
+        inset -20px -20px 60px #ffef0c;
+    width: 10vw;
+    margin: 0 auto;
+    color: black;
+    border-radius: 5px;
+    /* padding: 5px; */
+    height: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#code button {
+    box-sizing: 100%;
+    height: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: .1vw;
+    width: 1vw;
+}
+
+#code button svg {
+    height: 100%;
+    width: 100%;
+}
+
+#code button svg:hover {
+    fill: white;
+}
+
+.speech-bubble {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(calc(110% + 0.625em), 0%);
+    background: white;
+    border-radius: .4em;
+    height: 100%;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.speech-bubble:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 0.625em solid transparent;
+    border-right-color: white;
+    border-left: 0;
+    margin-top: -0.625em;
+    margin-left: -0.625em;
+}

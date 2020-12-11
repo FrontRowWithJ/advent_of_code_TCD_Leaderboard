@@ -18,9 +18,7 @@ function Bar(props) {
                 alignItems: "flex-end",
                 bottom: 0
             }}>
-                <div className="bar-scorebar" style={{
-                    backgroundColor: props.backgroundColor,
-                }}>
+                <div className="bar-scorebar" style={props.style}>
                     <div className="bar-score">{props.score}</div>
                     <div className="bar-score">Points</div>
                 </div>

@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Podium from './Podium.js';
 import Table from './Table.js';
 import Logo from './Logo.js';
-import Graph from './Graph.js';
+// import Graph from './Graph.js';
+import Navbar from './Navbar.js'
 import './tailwind.output.css';
-
+import "./fittext.js"
 const sendHTTPRequest = (setPlayers, setTop3) => {
   const http = new XMLHttpRequest();
   const url = "http://localhost:8080/"; //! Update the url
@@ -29,6 +30,19 @@ const sendHTTPRequest = (setPlayers, setTop3) => {
         const tmp = top3[0];
         top3[0] = top3[1];
         top3[1] = tmp;
+
+        top3[1].style = {
+          background: "#e41d67",
+          boxShadow: "inset 20px 20px 60px #c21958, inset -20px -20px 60px #ff2176",
+        };
+        top3[0].style = {
+          background: "#ff7c32",
+          boxShadow: "inset 20px 20px 60px #d9692b, inset -20px -20px 60px #ff8f3a",
+        };
+        top3[2].style = {
+          background: "#017d97",
+          boxShadow: "inset 20px 20px 60px #016a80, inset -20px -20px 60px #0190ae",
+        };
         setTop3(top3);
         setPlayers(p);
       }
@@ -41,20 +55,19 @@ const sendHTTPRequest = (setPlayers, setTop3) => {
   http.send();
 }
 function App() {
-  const maxHeight = 100;
   const [players, setPlayers] = useState(null);
   const [top3Players, setTop3] = useState(null);
   useEffect(() => {
     sendHTTPRequest(setPlayers, setTop3);
   }, []);
   return (
-    players ? <div>
-      <div style={{ width: "100%" }}>Link to the competion website</div>
-      <span>The code to join the competion</span>
+    players ? <div style={{ width: "100%", height: "100%", overflow: "hidden", position: "relative" }}>
+      <Navbar
+        top={<Table players={players}></Table>}
+        bottom={<Podium playerData={top3Players}></Podium>}
+      >
+      </Navbar>
 
-      <Podium playerData={top3Players} maxHeight={maxHeight}></Podium>
-      <Table players={players}></Table>
-      <Graph members={players}></Graph>
     </div> : <Logo></Logo>
   );
 }

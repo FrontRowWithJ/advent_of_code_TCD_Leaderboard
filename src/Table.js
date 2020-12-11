@@ -1,33 +1,39 @@
 import React from 'react';
 import './StarGrid.css';
+import './table.css';
 import Star from "./Star.js";
 //props: players: object array of all participants, ordered by position.
 //       object = {name, local_score, completion_day_level}
 //       completion_day_level will contain star data
 function Table(props) {
     const completion_day_levels = props.players.map((player) => player.completion_day_level);
-    return (<table>
-        <thead>
-            <tr>
-                <th>Position</th>
-                <th>Name</th>
-                <th>Points</th>
-                <th>Stars</th>
-            </tr>
-        </thead>
-        <tbody>
-            {props.players.map((player, i) => {
-                return (
-                    <tr key={i}>
-                        <td>{i + 1}</td>
-                        <td>{player.name}</td>
-                        <td>{player.local_score}</td>
-                        <td><StarGrid csl={completion_day_levels[i]}></StarGrid></td>
+    return (
+        <div id="table-container">
+            <table>
+                <thead>
+                    <tr id="table-head">
+                        <th>Position</th>
+                        <th>Name</th>
+                        <th>Points</th>
+                        <th>Stars</th>
                     </tr>
-                )
-            })}
-        </tbody>
-    </table>)
+                </thead>
+                <tbody>
+                    {props.players.map((player, i) => {
+                        return (
+                            <tr key={i}>
+                                <td>{i + 1}</td>
+                                <td>{player.name}</td>
+                                <td>{player.local_score}</td>
+                                <td>
+                                    <StarGrid csl={completion_day_levels[i]}></StarGrid>
+                                </td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+        </div>);
 }
 
 //props: csl

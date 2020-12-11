@@ -1,4 +1,4 @@
-var colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
+const colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
     '#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D',
     '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A',
     '#FF99E6', '#CCFF1A', '#FF1A66', '#E6331A', '#33FFCC',
@@ -12,14 +12,24 @@ var colorArray = ['#FF6633', '#FFB399', '#FF33FF', '#FFFF99', '#00B3E6',
 //? set colors for the lines
 //? set background color
 //? set font
+let unitsAcross = 25;
+let unitsDown = 50;
 
-const drawGraph = (data, canvas) => {
+const drawGraph = (data, canvas, translate, scale) => {
+    canvas.scale = canvas.scale ? canvas.scale : 1;
+    canvas.scale = scale ? scale : canvas.scale;
+    canvas._translate = canvas._translate ? canvas._translate : { x: 0, y: 0 };
+    canvas._translate = translate ? translate : canvas._translate;
+    unitsAcross = data.maxDay;
+    unitsDown = data.maxPoints;
     const ctx = canvas.getContext("2d");
-    const m = genMeasureMents(canvas);
+    const m = genMeasureMents(canvas, 1);
     drawBackground(ctx, m, "#101023");
     ctx.fillStyle = "white";
     ctx.strokeStyle = "white"
     ctx.font = `${m.min * (1 - m.gridRatio) / 5}px Arial`;
+    ctx.translate(canvas._translate.x, canvas._translate.y);
+    ctx.scale(canvas.scale, canvas.scale);
     drawYAxisNumbers(ctx, m);
     drawXAxisNumbers(ctx, m);
     const lineWidth = 0.2;
@@ -63,29 +73,33 @@ const drawBackground = (ctx, measurements, backgroundColor) => {
     ctx.fillStyle = backgroundColor;
     ctx.fillRect(0, 0, measurements.width, measurements.height);
 }
-const genMeasureMents = (canvas) => {
+const genMeasureMents = (canvas, zoom) => {
     canvas.style.width = '100%';
     canvas.style.height = '100%';
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
-    const unitsAcross = 25;
-    const unitsDown = 50;
+    const width = canvas.clientWidth * zoom;
+    const height = canvas.clientHeight * zoom;
     const gridRatio = 0.9;
+    const cellw = width * gridRatio / unitsAcross;
+    const cellh = height * gridRatio / unitsDown;
+    // const cellWidth = Math.pow(cellw * cellh, 0.5);
     return {
         gridRatio: gridRatio,
         unitsAcross: unitsAcross,
         unitsDown: unitsDown,
-        width: canvas.clientWidth,
-        height: canvas.clientHeight,
-        min: Math.min(canvas.clientWidth, canvas.clientHeight),
-        cellWidth: canvas.clientWidth * gridRatio / unitsAcross,
-        cellHeight: canvas.clientHeight * gridRatio / unitsDown,
-        leftOffset: canvas.clientWidth * (1 - gridRatio) / 2,
-        topOffset: canvas.clientHeight * (1 - gridRatio) / 2,
-        gridWidth: canvas.clientWidth * gridRatio,
-        gridHeight: canvas.clientHeight * gridRatio,
-        yScaleLineLength: canvas.clientWidth * (1 - gridRatio) / 8,
-        xScaleLineLength: canvas.clientHeight * (1 - gridRatio) / 8,
+        width: width,
+        height: height,
+        min: Math.min(width, height),
+        cellWidth: cellw,
+        cellHeight: cellh,
+        leftOffset: width * (1 - gridRatio) / 2,
+        topOffset: height * (1 - gridRatio) / 2,
+        // gridWidth: width * gridRatio,
+        gridWidth: cellw * unitsAcross,
+        gridHeight: cellh * unitsDown,
+        yScaleLineLength: width * (1 - gridRatio) / 8,
+        xScaleLineLength: height * (1 - gridRatio) / 8,
         scaleGapFactor: 1.15
     };
 }
@@ -120,6 +134,9 @@ const drawData = (data, ctx, measurements) => {
     //draw the circles
     const fillStyle = ctx.fillStyle;
     let index = 0;
+    let matrix = new Array(unitsDown);
+    for (let i = 0; i < unitsDown; i++)
+        matrix[i] = new Array(unitsAcross);
     data.forEach(player => {
         ctx.fillStyle = colorArray[index];
         const starsSoFar = player.pointsSoFar;
@@ -127,11 +144,12 @@ const drawData = (data, ctx, measurements) => {
         let points = [];
         starsSoFar.forEach((starCount, i) => {
             ctx.beginPath();
-            const xOffset = Math.random() * measurements.cellWidth / 4;
-            const cx = measurements.leftOffset + (i + 1) * measurements.cellWidth + xOffset;
+            matrix[starCount][i] = matrix[starCount][i] === undefined ? 0 : matrix[starCount][i] + (min / 6);
+            // const xOffset = Math.random() * measurements.cellWidth / 4;
+            const cx = measurements.leftOffset + (i + 1) * measurements.cellWidth + matrix[starCount][i];
             const cy = measurements.topOffset + measurements.gridHeight - starCount * measurements.cellHeight;
             points.push({ x: cx, y: cy });
-            ctx.arc(cx, cy, min / 3, 0, 2 * Math.PI);
+            ctx.arc(cx, cy, min / 6, 0, 2 * Math.PI);
             ctx.fill();
         });
         // draw the lines
@@ -179,3 +197,4 @@ const drawGraphLine = (points, ctx, f, t, strokeStyle) => {
 }
 
 export default drawGraph;
+export { colorArray };

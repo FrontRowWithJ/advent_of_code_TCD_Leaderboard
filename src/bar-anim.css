@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
 :root {
     --anim-delay: 1000ms;
 }
@@ -37,7 +39,7 @@
 .bar-container {
     width: 30%;
     height: 100%;
-    
+    font-family: "poppins";
 }
 
 .bar-name {
@@ -49,6 +51,7 @@
     animation-fill-mode: forwards;
     width: 100%;
     text-align: center;
+    font-size: 1.2rem;
 }
 
 .bar-scorebar {
@@ -63,11 +66,12 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    border-radius: 10px;
 }
 
 .bar-score {
     color: rgba(0, 0, 0, 0);
-    animation-name: show-text-black;
+    animation-name: show-text-white;
     animation-duration: 1s;
     animation-timing-function: ease-in-out;
     animation-delay: var(--anim-delay);

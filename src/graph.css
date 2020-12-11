@@ -1,11 +1,35 @@
-.graph-label-container {
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+#graph-container {
+    width: 100%;
+    height: 90vh;
     display: flex;
+    flex-direction: column;
+    background-color: #101023;
+}
+
+
+
+#graph-visual {
+    width: 100%;
+    height: 90%;
+}
+
+#graph-text {
+    width: 100%;
+    /* height: 10%; */
     flex-direction: row;
+    display: flex;
     flex-wrap: wrap;
 }
 
-.graph-label {
-    color: black;
-    min-width: 15vw;
-    max-width: 30vw;
+
+.graph-label-text-container {
+
 }
+
+.graph-label-text-container div {}
+
+.graph-label-text-container span {}
+
+@media only screen and (min-width: 300px) {}
