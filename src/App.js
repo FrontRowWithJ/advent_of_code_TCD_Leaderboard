@@ -5,7 +5,6 @@ import Logo from './Logo.js';
 // import Graph from './Graph.js';
 import Navbar from './Navbar.js'
 import './tailwind.output.css';
-import "./fittext.js"
 const sendHTTPRequest = (setPlayers, setTop3) => {
   const http = new XMLHttpRequest();
   const url = "http://localhost:8080/"; //! Update the url

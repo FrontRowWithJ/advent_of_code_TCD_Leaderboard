@@ -60,7 +60,6 @@ function Graph(props) {
         const canvas = document.getElementById("graph-canvas");
         drawGraph(result, canvas, translate);
         window.onresize = () => drawGraph(result, canvas);
-        [...document.getElementsByClassName("label-text")].forEach((e) => window.fitText(e, 0.75));
         return () => window.onresize = null;
     }, [result, translate]);
     return (
