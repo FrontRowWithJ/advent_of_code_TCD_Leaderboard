@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Podium from './Podium.js';
 import Table from './Table.js';
 import Logo from './Logo.js';
-// import Graph from './Graph.js';
 import Navbar from './Navbar.js'
 import './tailwind.output.css';
 const sendHTTPRequest = (setPlayers, setTop3) => {

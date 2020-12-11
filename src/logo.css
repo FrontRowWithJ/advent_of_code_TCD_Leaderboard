@@ -1,6 +1,8 @@
 :root {
-    --outer-width: 11vw;
-    --inner-width: 8vw;
+    --inner-width: 10rem;
+    --font-size: 1.5rem;
+    --outer-width: calc(var(--font-size) + var(--inner-width));
+    
 }
 
 [id|="logo"] {
@@ -8,39 +10,30 @@
 }
 
 #logo-container {
-    width: var(--outer-width);
-    height: var(--outer-width);
-    position: absolute;
-    background-color: red;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo-image {
-    border-radius: 100vw;
     width: var(--inner-width);
     height: var(--inner-width);
     position: absolute;
-    left: calc(50% - var(--inner-width) / 2);
-    top: calc(50% - var(--inner-width) / 2);
-    background-color: green;
+    left: calc(50% - (var(--inner-width)) / 2);
+    top: calc(50% - (var(--inner-width))/ 2);
 }
 
-#logo-text {
+#logo-inner-circle {
+    background-color: red;
     border-radius: 100vw;
-    width: var(--outer-width);
-    height: var(--outer-width);
-    position: absolute;
-    left: calc(50% - var(--outer-width) / 2);
-    top: calc(50% - var(--outer-width) / 2);
+    width: var(--inner-width);
+    height: var(--inner-width);
     animation: rotate-logo 5s infinite forwards linear;
-}
-
-#logo-text svg {
-    width: 100%;
-    height: 100%;
-
+    border: 2px solid red;
+    box-sizing: content-box;
 }
 
 @keyframes rotate-logo {
@@ -53,6 +46,6 @@
     }
 }
 
-#test {
-    font-size: 0.7rem;
+#text-path {
+    font-size: var(--font-size);
 }

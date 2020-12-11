@@ -4,24 +4,23 @@ import white_tree from './christmas_tree_white.png';
 import green_tree from './christmas_tree_green.png';
 import './logo.css';
 
-function Logo(props) {
-    const width = 64;
+function Logo() {
     const [zIndices, setZIndices] = useState([0, 1, 2]);
     const trees = [red_tree, white_tree, green_tree];
     useEffect(() => {
         const iid = setInterval(() => {
-            const n = zIndices.map((zIndex) => {return (zIndex + 1) % zIndices.length});
+            const n = zIndices.map((zIndex) => { return (zIndex + 1) % zIndices.length });
             setZIndices(n);
         }, 1000);
         return () => clearInterval(iid);
     }, [zIndices]);
     return (
         <div id="logo-container">
-            <div id="logo-text">
-                <svg viewBox={`0 0 ${width} ${width}`} >
-                    <circle id="circle" cx="50%" cy="50%" r="23.27" fill="transparent" />
-                    <text width={`${width}`} fill="white">
-                        <textPath id="test" xlinkHref="#circle">
+            <div id="logo-inner-circle">
+                <svg width="100%" height="100%">
+                    <circle id="circle" cx="50%" cy="50%" r="64" fill="yellowgreen" />
+                    <text fill="white">
+                        <textPath id="text-path" xlinkHref="#circle">
                             TCD Advent of Code
                         </textPath>
                     </text>

@@ -34,7 +34,6 @@
     left: 0;
     top: 0;
     background-color: rgb(12, 20, 31);
-    overflow: scroll;
 }
 
 #bottom {
@@ -42,5 +41,4 @@
     left: 0;
     top: 50%;
     background-color: rgb(12, 20, 31);
-    overflow: scroll;
 }
