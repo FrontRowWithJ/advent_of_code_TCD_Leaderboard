@@ -34,8 +34,8 @@
     min-width: 3.3rem;
     border-radius: 1vh;
     background-color: #23AA56;
-    box-shadow: inset 20px 20px 60px #1a7e40,
-        inset -20px -20px 60px #2cd66c;
+    box-shadow: inset 30px 30px 59px #209c4f,
+        inset -30px -30px 59px #26b85d;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,20 +86,20 @@
     color: black;
     border-radius: 5px;
     height: 2rem;
-    width: fit-content;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 2.2rem;
+    width: calc(10vw + 2.2rem);
 }
 
 #code button {
     box-sizing: border-box;
     height: 100%;
     position: absolute;
-    right: 0;
-    width: 2.2em;
+    right: .2rem;
+    width: 2.2rem;
     padding: 0;
     margin: 0;
     border: 0;
@@ -153,4 +153,14 @@
 
 #info-container * {
     margin: auto;
+}
+
+
+@media only screen and (min-width: 1280px) {
+
+    #info-contaier a,
+    #info-container span,
+    #code {
+        height: 8vh;
+    }
 }

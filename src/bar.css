@@ -2,6 +2,7 @@
     font-family: "Poppins";
     src: url("/src/Poppins-SemiBold.ttf") format("truetype");
 }
+
 :root {
     --anim-delay: 1000ms;
 }
@@ -16,23 +17,13 @@
     }
 }
 
-@keyframes show-text-white {
+@keyframes show-div {
     0% {
-        color: rgba(255, 255, 255, 0);
+        opacity: 0;
     }
 
     100% {
-        color: rgba(255, 255, 255, 1);
-    }
-}
-
-@keyframes show-text-black {
-    0% {
-        color: rgba(0, 0, 0, 0);
-    }
-
-    100% {
-        color: rgba(0, 0, 0, 1);
+        opacity: 1;
     }
 }
 
@@ -47,15 +38,16 @@
 }
 
 .bar-name {
-    color: rgba(255, 255, 255, 0);
-    animation-name: show-text-white;
+    opacity: 0;
+    color: white;
+    animation-name: show-div;
     animation-duration: 1s;
     animation-timing-function: ease-in-out;
     animation-delay: var(--anim-delay);
     animation-fill-mode: forwards;
     width: 100%;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 .bar-scorebar {
@@ -74,11 +66,21 @@
 }
 
 .bar-score {
-    color: rgba(0, 0, 0, 0);
-    animation-name: show-text-white;
+    opacity: 0;
+    color: black;
+    animation-name: show-div;
     animation-duration: 1s;
     animation-timing-function: ease-in-out;
     animation-delay: var(--anim-delay);
     animation-fill-mode: forwards;
     width: 100%;
+    font-size: 1.4rem;
+}
+
+@media only screen and (min-width: 1280px) {
+
+    .bar-score,
+    .bar-name {
+        font-size: 2vw;
+    }
 }

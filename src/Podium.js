@@ -8,7 +8,7 @@ import './podium.css'
 
 const Podium = (props) => {
     const heights = props.playerData.map((e) => {
-        return `${50 * e.local_score / props.playerData[1].local_score}%`
+        return `${95 * e.local_score / props.playerData[1].local_score}%`
     });
     const lefts = ["2.5%", "35%", "67.5%"];
     return (<div id="podium">

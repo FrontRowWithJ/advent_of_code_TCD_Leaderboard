@@ -1,5 +1,5 @@
 import React from 'react';
-import "./bar-anim.css";
+import "./bar.css";
 
 const Bar = (props) => {
     return (

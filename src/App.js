@@ -38,8 +38,8 @@ const sendHTTPRequest = (setPlayers, setTop3) => {
           boxShadow: "inset 20px 20px 60px #d9692b, inset -20px -20px 60px #ff8f3a",
         };
         top3[2].style = {
-          background: "#017d97",
-          boxShadow: "inset 20px 20px 60px #016a80, inset -20px -20px 60px #0190ae",
+          background: "#0192B1",
+          boxShadow: "inset 20px 20px 60px #017c96, inset -20px -20px 60px #01a8cc",
         };
         setTop3(top3);
         setPlayers(p);
