@@ -52,7 +52,8 @@
     justify-self: center;
     width: fit-content;
     font-size: 1.3rem;
-    height: 1.9rem;
+    /* height: 1.9rem; */
+    display: block;
 }
 
 #bottom a:hover {
@@ -158,9 +159,17 @@
 
 @media only screen and (min-width: 1280px) {
 
-    #info-contaier a,
-    #info-container span,
+    #bottom a,
+    #join-leaderboard,
     #code {
-        height: 8vh;
+        flex-grow: 1;
+        font-size: 3vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #code {
+        font-size: 2.5vh;
     }
 }
