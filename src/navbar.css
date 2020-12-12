@@ -48,6 +48,7 @@
 }
 
 #bottom a {
+    color: white;
     justify-self: center;
     width: fit-content;
     font-size: 1.3rem;
@@ -99,6 +100,10 @@
     position: absolute;
     right: 0;
     width: 2.2em;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
 }
 
 #code button svg {

@@ -3,7 +3,6 @@ import Podium from './Podium.js';
 import Table from './Table.js';
 import Logo from './Logo.js';
 import Navbar from './Navbar.js'
-import './tailwind.output.css';
 const sendHTTPRequest = (setPlayers, setTop3) => {
   const http = new XMLHttpRequest();
   const url = "https://murmuring-river-84813.herokuapp.com/"; //! Update the url

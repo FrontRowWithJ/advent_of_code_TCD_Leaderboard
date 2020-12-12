@@ -3,7 +3,7 @@ import "./bar-anim.css";
 
 function Bar(props) {
     return (
-        <div className=" flex flex-col bar-container items-end absolute" style={{
+        <div className="bar-container" style={{
             left: props.left
         }}>
             <div className="bar-name" style={{

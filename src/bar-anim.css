@@ -14,8 +14,6 @@
     }
 }
 
-
-
 @keyframes show-text-white {
     0% {
         color: rgba(255, 255, 255, 0);
@@ -40,6 +38,10 @@
     width: 30%;
     height: 100%;
     font-family: "poppins";
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
 }
 
 .bar-name {
