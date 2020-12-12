@@ -5,7 +5,7 @@ import Logo from './Logo.js';
 import Navbar from './Navbar.js'
 const sendHTTPRequest = (setPlayers, setTop3) => {
   const http = new XMLHttpRequest();
-  const url = "https://murmuring-river-84813.herokuapp.com/"; //! Update the url
+  const url = "https://murmuring-river-84813.herokuapp.com/";
   const colors = ["red", "white", "green"];
   http.open("GET", url);
   http.onreadystatechange = () => {
