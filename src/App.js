@@ -3,12 +3,13 @@ import Podium from './Podium.js';
 import Table from './Table.js';
 import Logo from './Logo.js';
 import Navbar from './Navbar.js'
+
 const sendHTTPRequest = (setPlayers, setTop3) => {
   const http = new XMLHttpRequest();
   const url = "https://murmuring-river-84813.herokuapp.com/";
-  const colors = ["red", "white", "green"];
   http.open("GET", url);
   http.onreadystatechange = () => {
+    const colors = ["red", "white", "green"];
     if (http.readyState === XMLHttpRequest.DONE) {
       try {
         const json = JSON.parse(http.responseText);
@@ -51,7 +52,7 @@ const sendHTTPRequest = (setPlayers, setTop3) => {
   }
   http.send();
 }
-function App() {
+const App = () => {
   const [players, setPlayers] = useState(null);
   const [top3Players, setTop3] = useState(null);
   useEffect(() => {

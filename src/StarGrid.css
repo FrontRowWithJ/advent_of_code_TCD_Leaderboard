@@ -3,6 +3,5 @@
     grid-template-columns: repeat(25, 1fr);
     grid-template-rows: 1fr 1fr;
     width: clamp(0px, 100%, 400px);
-    /* height: calc(100% / 12.5); */
     margin: 0 auto;
 }

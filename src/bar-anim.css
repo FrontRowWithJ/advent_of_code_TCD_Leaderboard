@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-
+@font-face {
+    font-family: "Poppins";
+    src: url("/src/Poppins-SemiBold.ttf") format("truetype");
+}
 :root {
     --anim-delay: 1000ms;
 }

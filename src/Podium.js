@@ -6,7 +6,7 @@ import './podium.css'
 //       playerData = {name: "", local_score: ""}
 //props: max_height
 
-function Podium(props) {
+const Podium = (props) => {
     const heights = props.playerData.map((e) => {
         return `${50 * e.local_score / props.playerData[1].local_score}%`
     });

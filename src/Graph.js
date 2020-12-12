@@ -28,7 +28,7 @@ const disableDrag = (e, isMouseDown, setMouseDown, translate, setTranslate, star
     }
 }
 //props: members
-function Graph(props) {
+const Graph = (props) => {
     const [isMouseDown, setMouseDown] = useState(false);
     const [startPos, setStartPos] = useState({ x: 0, y: 0 });
     const [translate, setTranslate] = useState({ x: 0, y: 0 });
@@ -120,7 +120,7 @@ function Graph(props) {
                             <div className="graph-label-text-container" key={i}>
                                 <div className="graph-label" style={{ backgroundColor: colorArray[i] }}></div>
                                 <span className="label-text">{player.name}</span>
-                            </div>)
+                            </div>);
                     })
                 }
             </div>

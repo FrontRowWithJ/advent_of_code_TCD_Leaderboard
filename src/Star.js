@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Star(props) {
+const Star = (props) => {
     return (
         <svg style={{
             "height": "100%",

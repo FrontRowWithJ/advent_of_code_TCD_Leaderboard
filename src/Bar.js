@@ -1,7 +1,7 @@
 import React from 'react';
 import "./bar-anim.css";
 
-function Bar(props) {
+const Bar = (props) => {
     return (
         <div className="bar-container" style={{
             left: props.left

@@ -5,7 +5,7 @@ import Star from "./Star.js";
 //props: players: object array of all participants, ordered by position.
 //       object = {name, local_score, completion_day_level}
 //       completion_day_level will contain star data
-function Table(props) {
+const Table = (props) => {
     const completion_day_levels = props.players.map((player) => player.completion_day_level);
     return (
         <div id="table-container">
@@ -37,7 +37,7 @@ function Table(props) {
 }
 
 //props: csl
-function StarGrid(props) {
+const StarGrid = (props) => {
     const colors = ["red", "white", "green"];
     const stars = [];
     for (let i = 1; i <= 25; i++)

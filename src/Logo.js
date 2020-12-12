@@ -4,7 +4,7 @@ import white_tree from './christmas_tree_white.png';
 import green_tree from './christmas_tree_green.png';
 import './logo.css';
 
-function Logo() {
+const Logo = () => {
     const [zIndices, setZIndices] = useState([0, 1, 2]);
     const trees = [red_tree, white_tree, green_tree];
     useEffect(() => {
