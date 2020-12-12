@@ -6,7 +6,7 @@ import Navbar from './Navbar.js'
 import './tailwind.output.css';
 const sendHTTPRequest = (setPlayers, setTop3) => {
   const http = new XMLHttpRequest();
-  const url = "https://git.heroku.com/murmuring-river-84813.git"; //! Update the url
+  const url = "https://murmuring-river-84813.herokuapp.com/"; //! Update the url
   const colors = ["red", "white", "green"];
   http.open("GET", url);
   http.onreadystatechange = () => {
