@@ -1,6 +1,10 @@
 @font-face {
     font-family: "Poppins";
-    src: url("/src/Poppins-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+00-7F;
+    src: local("Poppins"), url("./Poppins-SemiBold.ttf") format("truetype");
 }
 
 :root {
