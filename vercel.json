@@ -1,7 +1,7 @@
 {
     "headers": [
         {
-            "source": "/build/static/media/Poppins-SemiBold.cce5625b.ttf",
+            "source": "/static/media/Poppins-SemiBold.cce5625b.ttf",
             "headers": [
                 {
                     "key": "Cache-Control",
@@ -10,7 +10,7 @@
             ]
         },
         {
-            "source": "/build/static/media/christmas_tree_red.c09ce451.png",
+            "source": "/static/media/christmas_tree_red.c09ce451.png",
             "headers": [
                 {
                     "key": "Cache-Control",
@@ -19,7 +19,7 @@
             ]
         },
         {
-            "source": "/build/static/js/2.fd394de2.chunk.js",
+            "source": "/static/js/2.fd394de2.chunk.js",
             "headers": [
                 {
                     "key": "Cache-Control",
@@ -28,7 +28,7 @@
             ]
         },
         {
-            "source": "build/static/js/main.8eb09f63.chunk.js",
+            "source": "/static/js/main.8eb09f63.chunk.js",
             "headers": [
                 {
                     "key": "Cache-Control",
@@ -37,7 +37,7 @@
             ]
         },
         {
-            "source": "build/static/css/main.8f804bff.chunk.css",
+            "source": "/static/css/main.8f804bff.chunk.css",
             "headers": [
                 {
                     "key": "Cache-Control",

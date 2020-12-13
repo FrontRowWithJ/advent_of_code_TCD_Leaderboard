@@ -6,8 +6,7 @@ import Navbar from './Navbar.js'
 
 const sendHTTPRequest = (setPlayers, setTop3) => {
   const http = new XMLHttpRequest();
-  // const url = "https://murmuring-river-84813.herokuapp.com/";
-  const url = "http://localhost:8080"
+  const url = "https://murmuring-river-84813.herokuapp.com/";
   http.open("GET", url);
   http.onreadystatechange = () => {
     const colors = ["red", "white", "green"];
